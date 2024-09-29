@@ -48,7 +48,8 @@ export const AppContextProvider = ({ children }) => {
             <AppContext.Provider value={{
                 modals,
                 setModals,
-                isConnected
+                isConnected,
+                address
 
             }}>
 

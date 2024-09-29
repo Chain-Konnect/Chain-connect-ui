@@ -3,7 +3,7 @@ import { ai, bookmark, chats, home, logout, nft, post, profile } from '../assets
 import { AppContext } from '../ContextAPI'
 
 const SideBar = ({ currentNav, setCurrentNav }) => {
-    const { modals, setModals } = useContext(AppContext);
+    const { modals, setModals,address } = useContext(AppContext);
 
 
 
@@ -17,7 +17,7 @@ const SideBar = ({ currentNav, setCurrentNav }) => {
 
                 </div>
                 <p className='text-[10px]'>@Michael_12</p>
-                <p className='text-[12px]'>Wallet: 0x.................190191</p>
+                <p className='text-[12px]'><span className='font-semibold'>Wallet :</span> {address.substring(0,4)}.......{address.substr(-5)}</p>
 
             </div>
             <div className={`${currentNav == 0 ? 'bg-gray-400': ''} my-2 flex  space-x-2 items-center cursor-pointer ml-2 hover:scale-x-95 hover:duration-300 hover:bg-gray-400 px-2 py-2 rounded-sm`} onClick={() => setCurrentNav(0)}>

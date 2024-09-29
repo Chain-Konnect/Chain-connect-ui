@@ -1,11 +1,11 @@
 import React, {useContext} from 'react'
 import { add, bookmark, comment, fire, likes, nft } from '../assets'
-c
+import { AppContext } from '../ContextAPI'
 
 
 const Posts = () => {
     const myPost = [0, 1, 2, 4, 5, 6, 7, 9]
-    const { modals, setModals } = useContext(AppContext);
+    const { modals, setModals,address } = useContext(AppContext);
     
 
     return (
