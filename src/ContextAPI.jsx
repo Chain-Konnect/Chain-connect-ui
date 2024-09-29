@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import { useWeb3ModalProvider,useWeb3ModalAccount } from "@web3modal/ethers/react";
+import { ethers } from "ethers";
 
 export const AppContext = React.createContext();
 
