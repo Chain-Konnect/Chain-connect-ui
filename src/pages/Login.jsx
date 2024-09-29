@@ -17,7 +17,9 @@ const Login = () => {
                     <p className='text-[12px] mt-2 text-black'>Connect, Create, Earn - Your Blockchain Social Hub</p>
                     <p className='text-[12px] mt-2 text-black'> Login or Sign up by connecting your wallet</p>
 
-                    <button type="button" className='bg-gray-700 px-8 py-2 my-4'>Connect Wallet</button>
+                    <div className='my-4'>
+                        <w3m-button />
+                    </div>
 
                 </div>
 

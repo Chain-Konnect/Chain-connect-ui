@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import { add, bookmark, comment, fire, likes, nft } from '../assets'
-import { AppContext } from '../ContextAPI'
+c
 
 
 const Posts = () => {
