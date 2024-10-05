@@ -144,16 +144,15 @@ export const AppContextProvider = ({ children }) => {
     }
 
     const commentPost = async (_formdata) => {
-        const { postId, comment, imageOne, imageTwo } = _formdata
         try {
             const _signer = await getSigner()
             const _contract = await initializeContract(_signer)
 
             const status = await _contract.commentOnPost(
-                postId,
-                comment,
-                imageOne,
-                imageTwo
+                _formdata?.postId,
+                _formdata?.comment,
+                _formdata?.imageOne,
+                _formdata?.imageTwo
             )
             await status.wait();
 

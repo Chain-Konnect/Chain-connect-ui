@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { add, bookmark, chats, comment, fire, likes, nft } from '../assets'
 import toast from 'react-hot-toast'
 import { GoogleGenerativeAI } from '@google/generative-ai';
-const GEMINI_KEY = import.meta.env.VITE_OPEN_AI_KEY;
+const GEMINI_KEY = import.meta.env.VITE_GEMINI_KEY;
+console.log(GEMINI_KEY)
 
 const ChatWithAI = () => {
     const genAI = new GoogleGenerativeAI(
@@ -21,7 +22,7 @@ const ChatWithAI = () => {
             setChat((prevChat) => [...prevChat, huma]);
     
             const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-            const result = await model.generateContent(inputValue);
+            const result = await model.generateContent(`You are an AI model named ConnectAI, You can a knack at generating  crypto and web3 brief responses to ${inputValue}`);
             const response = await result.response;
             const text = await response.text();
     
