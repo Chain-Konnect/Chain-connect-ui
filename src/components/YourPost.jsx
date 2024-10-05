@@ -45,10 +45,10 @@ const YourPost = () => {
                         <img src={fire} className='w-[20px]' />
                         <p>12 Ignite</p>
                     </div>
-                    <div className='flex cursor-pointer'>
+                    {/* <div className='flex cursor-pointer'>
                         <img src={bookmark} className='w-[20px]' />
                         <p>Bookmark</p>
-                    </div>
+                    </div> */}
 
                 </div>
 

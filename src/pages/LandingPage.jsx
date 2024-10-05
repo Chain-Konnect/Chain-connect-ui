@@ -13,7 +13,8 @@ import CreatePostModal from '../modals/CreatePostModal'
 
 const LandingPage = () => {
   const [currentNav, setCurrentNav] = useState(0)
-  const { modals, setModals } = useContext(AppContext);
+  const { modals, setModals, userProfile, getPost } = useContext(AppContext);
+  
 
   return (
     <div className='flex flex-1 h-screen font-poppins'>

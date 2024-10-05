@@ -11,6 +11,7 @@ import fire from './ignite.svg'
 import nft from './nft1.png'
 import add from './add.svg'
 import bookmark from './bookmark.svg'
+import upload from './upload.svg'
 
 
 export {
@@ -26,5 +27,6 @@ export {
     fire,
     nft,
     add,
-    bookmark
+    bookmark,
+    upload
 }

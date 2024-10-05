@@ -1,7 +1,7 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import Login from './pages/Login'
 import LandingPage from './pages/LandingPage'
-import { mainnet, morphSepolia } from './contractServices/constants'
+import { Holesky, mainnet, morphSepolia } from './contractServices/constants'
 import { AppContext } from './ContextAPI'
 import { createWeb3Modal, defaultConfig } from '@web3modal/ethers/react'
 
@@ -30,19 +30,25 @@ const ethersConfig = defaultConfig({
 
 createWeb3Modal({
   ethersConfig,
-  chains: [morphSepolia, mainnet],
+  chains: [Holesky],
   projectId,
   enableAnalytics: true // Optional - defaults to your Cloud configuration
 })
 
 function App() {
-  const { modals, isConnected } = useContext(AppContext);
+  const { modals, isConnected, userProfile, getUserProfile } = useContext(AppContext);
+
+  useEffect(() => {
+    getUserProfile()
+
+  }, [isConnected])
 
   return (
 
     <>
 
-      {!isConnected ? <Login /> : <LandingPage />}
+      {!isConnected && (<Login />)}
+      {isConnected && userProfile?.status ? <LandingPage /> : <Login />}
 
     </>
   )
