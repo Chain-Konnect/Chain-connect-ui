@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { add, bookmark, chats, comment, fire, likes, nft } from '../assets'
 import toast from 'react-hot-toast'
 import { GoogleGenerativeAI } from '@google/generative-ai';
+
 const GEMINI_KEY = import.meta.env.VITE_GEMINI_KEY;
 
 const ChatWithAI = () => {
