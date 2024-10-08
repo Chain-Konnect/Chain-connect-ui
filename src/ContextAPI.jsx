@@ -269,7 +269,7 @@ export const AppContextProvider = ({ children }) => {
             const posts = []
             const contract = await initializeTronContract()
             const postID = await contract.postId().call()
-            
+
 
             for (let i = 0; i < postID; i++) {
                 const e = await contract.posts(i).call()
@@ -367,7 +367,7 @@ export const AppContextProvider = ({ children }) => {
 
             }
 
-            
+
             setPostComments(comments.reverse())
 
 
@@ -410,6 +410,7 @@ export const AppContextProvider = ({ children }) => {
                 getPostComments,
                 postComments,
                 setPostComments
+                
 
 
             }}>

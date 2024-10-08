@@ -1,12 +1,7 @@
 import axios from "axios";
 
-import toast from "react-hot-toast";
 
-// Load OpenAI API key from .env file
 const OPEN_AI_KEY = import.meta.env.VITE_OPEN_AI_KEY;
-console.log(OPEN_AI_KEY, "KEY")
-
-
 
 const instance = axios.create({
   headers: {
@@ -81,44 +76,6 @@ export const timeAgo = (bigIntValue) => {
 
 
 
-
-
-export const chainConnectAIModel = async (prompt) => {
-  try {
-    // Call OpenAI API for text completion
-    const response = await axios.post(
-      "https://api.openai.com/v1/chat/completions",
-      {
-        model: "gpt-3.5-turbo",  // Replace with the desired model name
-        messages: [{ role: "user", content: `You are a chainConnect AI Model, specialize in answering only related cryptocurrency questions. Your job is to take  ${prompt} as question and return a very brief answer.` }]
-      },
-      {
-        headers: {
-          "Authorization": `Bearer ${OPEN_AI_KEY}`,
-          "Content-Type": "application/json"
-        },
-        timeout: 60000  // Set your desired timeout value in milliseconds (60000ms = 60s)
-      }
-    );
-
-    const data = response.data;
-
-    // Check if a response was received
-    if (data.choices && data.choices[0].message.content) {
-      return {
-        status: 1,
-        response: data.choices[0].message.content
-      };
-    }
-
-  } catch (error) {
-    console.error("OPEN AI ERROR:", error.message);
-    return {
-      status: 0,
-      response: ''
-    };
-  }
-}
 
 
 
