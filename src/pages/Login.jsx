@@ -25,8 +25,6 @@ const Login = () => {
                     <p className='text-[12px] mt-2 text-black'>Connect, Create, Earn - Your Blockchain Social Hub</p>
                     <p className='text-[12px] mt-2 text-black'> Login or Sign up by connecting your wallet</p>
 
-
-
                     {connected && !userProfile?.status && <button className='py-2 px-4 my-4 rounded-md bg-blue-700' onClick={() => activateUser()}>
                         {activateAccountLoadingState ? "Activating" : "Activate Account"}
 
