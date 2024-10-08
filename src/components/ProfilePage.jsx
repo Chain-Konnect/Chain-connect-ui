@@ -1,10 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { add, bookmark, comment, fire, likes, nft } from '../assets'
 import { AppContext } from '../ContextAPI'
+import { useWallet } from '@tronweb3/tronwallet-adapter-react-hooks';
 
 const ProfilePage = () => {
     const myPost = [0, 1, 2, 4, 5, 6, 7, 9]
-    const { modals, setModals, address, userProfile, claimRewards } = useContext(AppContext);
+    const { modals, setModals, userProfile, claimRewards, getUserProfile } = useContext(AppContext);
+    const { connected, address } = useWallet();
+    
+    useEffect(() => {
+        getUserProfile(address)
+    }, [])
+
     return (
         <div className="flex-[0.8] bg-gray-200 overflow-y-scroll p-4 font-poppins">
             <div className='flex justify-between'>

@@ -9,14 +9,14 @@ import '@tronweb3/tronwallet-adapter-react-ui/style.css';
 
 
 function App() {
-  const {userProfile, getUserProfile } = useContext(AppContext);
+  const { userProfile, getUserProfile } = useContext(AppContext);
   const { connected, address } = useWallet();
 
 
-useEffect(() => {
-  getUserProfile(address)
+  useEffect(() => {
+    getUserProfile(address)
 
-}, [connected])
+  }, [connected])
 
   return (
 
