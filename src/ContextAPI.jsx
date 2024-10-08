@@ -21,6 +21,8 @@ export const AppContextProvider = ({ children }) => {
 
 
     const [activateAccountLoadingState, setActivateAccountLoadingState] = useState(false)
+    const [igniteLoadingState, setIgniteLoadingState] = useState(false)
+    const [commentLoadingState, setcommentLoadingState] = useState(false)
 
     const [userProfile, setUserProfile] = useState({})
     const [allPost, setAllPost] = useState([])
@@ -36,7 +38,7 @@ export const AppContextProvider = ({ children }) => {
 
 
 
-    const initializeTronContract = async () => await window.tronWeb?.contract().at('TBbFgGnQ9NBQZLoRmKrivnySZ5u7wfdw9q');
+    const initializeTronContract = async () => await window.tronWeb?.contract().at('THM4CeG8fGyJBs5VtAhz8teXS6q9SCFofn');
 
 
 
@@ -62,7 +64,7 @@ export const AppContextProvider = ({ children }) => {
 
 
     const getUserProfile = async () => {
-        console.log(address, "ADRESSSS")
+
         try {
             const _contract = await initializeTronContract()
 
@@ -80,7 +82,7 @@ export const AppContextProvider = ({ children }) => {
                 followersCount: profileData[7].toString(),
                 followingsCount: profileData[8].toString()
             }
-            console.log(parsedResult, "PARSSSS")
+
             setUserProfile(parsedResult)
 
             return parsedResult
@@ -114,7 +116,6 @@ export const AppContextProvider = ({ children }) => {
 
 
         } catch (error) {
-            console.log(error, "this is error")
             return toast.error("Account activated failed")
 
         }
@@ -133,7 +134,7 @@ export const AppContextProvider = ({ children }) => {
                 _formdata?.imageTwo
             ).send({
                 feeLimit: 200_000_000,
-                callValue: 1,
+                callValue: 0,
                 shouldPollResponse: true
             });
             if (status) {
@@ -161,21 +162,22 @@ export const AppContextProvider = ({ children }) => {
                 _postId
             ).send({
                 feeLimit: 200_000_000,
-                callValue: 2,
+                callValue: 0,
                 shouldPollResponse: true
             });
-            console.log(status, "STATUS")
+
 
 
             return toast.success("Post liked")
         } catch (error) {
-            console.log(error)
+
             return toast.error("Error occured")
 
         }
     }
 
     const commentPost = async (_formdata) => {
+        setcommentLoadingState(true)
 
         try {
 
@@ -188,21 +190,23 @@ export const AppContextProvider = ({ children }) => {
                 _formdata?.imageTwo
             ).send({
                 feeLimit: 200_000_000,
-                callValue: 1,
+                callValue: 0,
                 shouldPollResponse: true
             });
 
 
             toast.success("Comment posted")
+            setcommentLoadingState(false)
             setModals({ ...modals, CommentOnPostModal: false })
         } catch (error) {
-            console.log(error, "ER")
+            setcommentLoadingState(false)
             return toast.success("Error occured")
 
         }
     }
 
     const ignitePost = async (_postId, _address, amount) => {
+        setIgniteLoadingState(true)
 
         try {
 
@@ -220,9 +224,10 @@ export const AppContextProvider = ({ children }) => {
 
 
             toast.success("Post ignited")
+            setIgniteLoadingState(false)
             setModals({ ...modals, ignitePostModal: false })
         } catch (error) {
-            console.log(error)
+            setIgniteLoadingState(false)
             return toast.error("Error occured")
 
         }
@@ -328,7 +333,7 @@ export const AppContextProvider = ({ children }) => {
 
             setPostAuthorProfile(parsedResult)
         } catch (error) {
-            console.log(error)
+
 
         }
 
@@ -411,7 +416,9 @@ export const AppContextProvider = ({ children }) => {
                 setPostAuthorProfile,
                 getPostComments,
                 postComments,
-                setPostComments
+                setPostComments,
+                igniteLoadingState,
+                commentLoadingState
 
 
 

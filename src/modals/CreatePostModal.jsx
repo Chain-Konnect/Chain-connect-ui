@@ -129,8 +129,8 @@ const CreatePostModal = () => {
         </div>
 
         <div className='flex justify-end'>
-          {!createPostState ? <button className='bg-blue-600 rounded-md text-white px-4 py-2 my-4' onClick={() => createPost()}>Create Post</button> :
-            <button className='bg-blue-600 rounded-md text-white px-4 py-2 my-4 italic' >Creating Post ...</button>
+          {!createPostState ? <button className='bg-blue-600 rounded-md text-white px-4 py-2 my-4 italic text-[10px]' onClick={() => createPost()}>Create Post</button> :
+            <button className='bg-blue-600 rounded-md text-white px-4 py-2 my-4 italic text-[10px]' >Creating Post ...</button>
 
           }
         </div>

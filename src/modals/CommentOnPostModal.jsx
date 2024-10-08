@@ -4,7 +4,7 @@ import { edgelessTestnet } from 'wagmi/chains';
 import { timeAgo } from '../helpers';
 
 const CommentOnPostModal = () => {
-  const { modals, setModals, commentPost, setPostComments, ignitePostData, postComments } = useContext(AppContext);
+  const { modals, setModals, commentPost, setPostComments, ignitePostData, postComments, commentLoadingState } = useContext(AppContext);
   const [textCount, setTextCount] = useState("")
   const myList = [1, 2, 3, 5]
 
@@ -65,7 +65,8 @@ const CommentOnPostModal = () => {
 
         </div>
         <div className='flex justify-end'>
-          <button className='bg-blue-600 rounded-md text-white px-4 py-2 my-4' onClick={() => commentPost(formdata)}>Send</button>
+         {!commentLoadingState && <button className='bg-blue-600 rounded-md text-white px-4 py-2 my-4 text-[10px]' onClick={() => commentPost(formdata)}>Send</button>}
+         {commentLoadingState && <button className='bg-blue-600 rounded-md text-white px-4 py-2 my-4 italic text-[10px]'>Commenting ....</button>}
         </div>
 
       </div>

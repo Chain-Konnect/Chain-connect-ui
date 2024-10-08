@@ -3,7 +3,7 @@ import { AppContext } from '../ContextAPI'
 
 
 const IgniteAPostModal = () => {
-    const { modals, setModals, ignitePost, ignitePostData, setIgnitePostData } = useContext(AppContext)
+    const { modals, setModals, ignitePost, ignitePostData, setIgnitePostData, igniteLoadingState } = useContext(AppContext)
 
 
     const handleChange = (e) => {
@@ -25,7 +25,8 @@ const IgniteAPostModal = () => {
                 <p className='text-[12px] my-2'>Enter the amount of Token you wish to send</p>
                 <input type="number" name="" id="" className='w-full outline-none p-4  border border-black' placeholder='Enter amount here' onChange={(e) => handleChange(e)} />
                 <div className='flex justify-end'>
-                    <button className='bg-blue-600 rounded-md text-white px-4 py-2 my-4' onClick={() => ignitePost(ignitePostData?.postId, ignitePostData?.author, ignitePostData?.amount)}>Send</button>
+                    {!igniteLoadingState && <button className='bg-blue-600 rounded-md text-white px-4 py-2 my-4 italic text-[10px]' onClick={() => ignitePost(ignitePostData?.postId, ignitePostData?.author, ignitePostData?.amount)}>Send</button>}
+                    {igniteLoadingState && <button className='bg-blue-600 rounded-md text-white px-4 py-2 my-4 italic text-[10px]'>Igniting ....</button>}
                 </div>
 
             </div>
