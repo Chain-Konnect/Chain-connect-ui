@@ -23,7 +23,7 @@ const Login = () => {
 
 
                     {!window.tronWeb?.defaultAddress.base58 &&
-                        <button onClick={() => connectWallet()} className='p-4 rounded-md bg-blue-700'>Connect Wallet</button>
+                        <button onClick={() => connectWallet()} className='p-3 rounded-md bg-blue-700 mt-2 text-[10px]'>Connect Wallet</button>
                     }
                     {window.tronWeb?.defaultAddress.base58 && !userProfile?.status && <button className='py-2 px-4 my-4 rounded-md bg-blue-700' onClick={() => activateUser()}>
                         {activateAccountLoadingState ? "Activating" : "Activate Account"}
