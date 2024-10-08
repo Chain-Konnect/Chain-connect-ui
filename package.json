@@ -12,6 +12,7 @@
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
     "@tatumio/tatum": "^3.0.23",
+    "@tronweb3/tronwallet-adapter-react-ui": "^1.1.9",
     "@web3modal/ethers": "^4.1.10",
     "@web3modal/wagmi": "^5.1.10",
     "axios": "^1.7.7",
