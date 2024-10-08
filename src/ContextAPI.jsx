@@ -346,7 +346,7 @@ export const AppContextProvider = ({ children }) => {
 
             const status = await _contract.claimRewards().send({
                 feeLimit: 200_000_000,
-                callValue: amount,
+                callValue: 0,
                 shouldPollResponse: true
             })
             return toast.success("Rewards claimed")

@@ -7,7 +7,7 @@ const ProfilePage = () => {
     const myPost = [0, 1, 2, 4, 5, 6, 7, 9]
     const { modals, setModals, userProfile, claimRewards, getUserProfile } = useContext(AppContext);
     const { connected, address } = useWallet();
-    
+
     useEffect(() => {
         getUserProfile(address)
     }, [])
@@ -47,7 +47,7 @@ const ProfilePage = () => {
                         </div>
                         <div className='my-4'>
                             <p>Amount Earned From Chain-Connect</p>
-                            <input type="text" className='w-1/2 py-3 px-2 outline-none rounded-md' readOnly placeholder={userProfile?.earnedAmount ? (userProfile?.earnedAmount / 10 ** 6).toString() : "0"} />
+                            <input type="text" className='w-1/2 py-3 px-2 outline-none rounded-md' readOnly placeholder={userProfile?.earnedAmount ? (userProfile?.earnedAmount / 10 ** 18).toString() : "0"} />
                             <button className='bg-blue-600 p-3 text-[10px] block mt-2  text-white rounded-sm ' onClick={() => claimRewards(userProfile?.earnedAmount)}>Claim Rewards</button>
 
                         </div>
