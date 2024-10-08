@@ -40,7 +40,7 @@ const ProfilePage = () => {
                         </div>
                         <div className='my-4'>
                             <p>Amount Earned From Chain-Connect</p>
-                            <input type="text" className='w-1/2 py-3 px-2 outline-none rounded-md' readOnly placeholder={userProfile?.earnedAmount ? userProfile?.earnedAmount / 10 ** 18 : 0} />
+                            <input type="text" className='w-1/2 py-3 px-2 outline-none rounded-md' readOnly placeholder={userProfile?.earnedAmount ? userProfile?.earnedAmount / 10 ** 6 : 0} />
                             <button className='bg-blue-600 p-3 text-[10px] block mt-2  text-white rounded-sm ' onClick={() => claimRewards(userProfile?.earnedAmount)}>Claim Rewards</button>
 
                         </div>
