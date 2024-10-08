@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import { useWeb3ModalProvider, useWeb3ModalAccount } from "@web3modal/ethers/react";
 import { ethers, toNumber } from "ethers";
 import toast from "react-hot-toast";
 import { socialFIContractAddress, SocialFiABI, Holesky } from "./contractServices/constants";
+import { useWallet, WalletProvider } from '@tronweb3/tronwallet-adapter-react-hooks';
 
 
 export const AppContext = React.createContext();
@@ -10,6 +10,7 @@ const projectId = import.meta.env.VITE_APP_WALLET_CONNECT_ID
 
 
 export const AppContextProvider = ({ children }) => {
+    const { connect, disconnect, select, connected, address } = useWallet();
     const [modals, setModals] = useState({
         ignitePostModal: false,
         CreatePostModal: false,
@@ -33,7 +34,7 @@ export const AppContextProvider = ({ children }) => {
 
 
 
-    const { address, chainId, isConnected } = useWeb3ModalAccount()
+
 
     const initializeTronContract = async () => await window.tronWeb?.contract().at('TBbFgGnQ9NBQZLoRmKrivnySZ5u7wfdw9q');
 
@@ -61,10 +62,11 @@ export const AppContextProvider = ({ children }) => {
 
 
     const getUserProfile = async () => {
+        console.log(address, "ADRESSSS")
         try {
             const _contract = await initializeTronContract()
 
-            const profileData = await _contract.users(window.tronWeb?.defaultAddress.base58).call()
+            const profileData = await _contract.users(address).call()
 
 
             const parsedResult = {
@@ -78,6 +80,7 @@ export const AppContextProvider = ({ children }) => {
                 followersCount: profileData[7].toString(),
                 followingsCount: profileData[8].toString()
             }
+            console.log(parsedResult, "PARSSSS")
             setUserProfile(parsedResult)
 
             return parsedResult
@@ -383,10 +386,9 @@ export const AppContextProvider = ({ children }) => {
     return (
         <>
             <AppContext.Provider value={{
+                address,
                 modals,
                 setModals,
-                isConnected,
-                address,
                 getUserProfile,
                 userProfile,
                 setUserProfile,
@@ -410,7 +412,7 @@ export const AppContextProvider = ({ children }) => {
                 getPostComments,
                 postComments,
                 setPostComments
-                
+
 
 
             }}>

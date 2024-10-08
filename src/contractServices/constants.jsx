@@ -1,4 +1,6 @@
 import socialFIABI from './sociafiABI.json'
+import { WalletModalProvider, WalletActionButton } from '@tronweb3/tronwallet-adapter-react-ui';
+import { useWallet, WalletProvider } from '@tronweb3/tronwallet-adapter-react-hooks';
 
 
 export const socialFIContractAddress = "0xe926353f87085a353349b75f438cb6352525b2a8"
@@ -30,4 +32,10 @@ export const Holesky = {
     currency: 'ETH',
     rpcUrl: 'https://ethereum-holesky.publicnode.com'
 
+}
+
+
+export function ConnectComponent() {
+    const { connect, disconnect, select, connected } = useWallet();
+    return <WalletActionButton></WalletActionButton>;
 }

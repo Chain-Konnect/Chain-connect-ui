@@ -1,32 +1,36 @@
-import { useState, useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import Login from './pages/Login'
 import LandingPage from './pages/LandingPage'
 import { AppContext } from './ContextAPI'
 
+import { useWallet } from '@tronweb3/tronwallet-adapter-react-hooks';
 
-const projectId = import.meta.env.VITE_APP_WALLET_CONNECT_ID
-
-
+import '@tronweb3/tronwallet-adapter-react-ui/style.css';
 
 
 function App() {
-  const { modals, isConnected, userProfile, getUserProfile } = useContext(AppContext);
-  const walletConnected = () => window.tronWeb?.defaultAddress.base58;
+  const {userProfile, getUserProfile } = useContext(AppContext);
+  const { connected, address } = useWallet();
 
-  useEffect(() => {
-    getUserProfile()
 
-  }, [!walletConnected])
+useEffect(() => {
+  getUserProfile(address)
+
+}, [connected])
 
   return (
 
+
     <>
-
-      {/* {!window.tronWeb?.defaultAddress.base58 && (<Login />)} */}
-      {window.tronWeb?.defaultAddress.base58 && userProfile?.status ? <LandingPage /> : <Login />}
-
+      {connected && userProfile?.status ? <LandingPage /> : <Login />}
     </>
+
   )
+
+
+
 }
 
 export default App
+
+

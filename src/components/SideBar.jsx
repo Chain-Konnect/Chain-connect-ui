@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { ai, bookmark, chats, home, logout, nft, post, profile } from '../assets'
 import { AppContext } from '../ContextAPI'
+import { ConnectComponent } from '../contractServices/constants';
 
 const SideBar = ({ currentNav, setCurrentNav }) => {
     const { modals, setModals, address, userProfile } = useContext(AppContext);
@@ -40,10 +41,10 @@ const SideBar = ({ currentNav, setCurrentNav }) => {
                 <img src={ai} className='w-[5%]' />
                 <p className=' tracking-widest'>Chat With AI</p>
             </div>
-            {/* <div className={`${currentNav == 5 ? 'bg-gray-400' : ''} my-2 flex  space-x-2 items-center cursor-pointer ml-2 hover:scale-x-95 hover:duration-300 hover:bg-gray-400 px-2 py-2 rounded-sm`} onClick={() => setCurrentNav(5)}>
-                <img src={bookmark} className='w-[5%]' />
-                <p className=' tracking-widest'>Bookmark</p>
-            </div> */}
+            <div className={`${currentNav == 5 ? 'bg-gray-400' : ''} my-2 flex  space-x-2 items-center cursor-pointer ml-2 hover:scale-x-95 hover:duration-300 hover:bg-gray-400 px-2 py-2 rounded-sm`} onClick={() => setCurrentNav(5)}>
+                <p>Logout</p>
+                <ConnectComponent></ConnectComponent>
+            </div>
 
 
 

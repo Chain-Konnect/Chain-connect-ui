@@ -1,11 +1,15 @@
 import React, { useContext } from 'react'
 import { logo } from '../assets'
 import { AppContext } from '../ContextAPI';
+import { WalletModalProvider, WalletActionButton } from '@tronweb3/tronwallet-adapter-react-ui';
+import { useWallet, WalletProvider } from '@tronweb3/tronwallet-adapter-react-hooks';
+import { ConnectComponent } from '../contractServices/constants';
 
 
 const Login = () => {
     const { modals, setModals, userProfile, activateUser, activateAccountLoadingState, connectWallet } = useContext(AppContext);
- 
+    const { connect, disconnect, select, connected } = useWallet();
+
     return (
         <div className='flex flex-1 h-screen p-2 text-white font-poppins bg-gray-300'>
             <div className='flex-[0.4] bg-black h-full rounded-lg items-center flex flex-col justify-center'>
@@ -22,14 +26,16 @@ const Login = () => {
                     <p className='text-[12px] mt-2 text-black'> Login or Sign up by connecting your wallet</p>
 
 
-                    {!window.tronWeb?.defaultAddress.base58 &&
-                        <button onClick={() => connectWallet()} className='p-3 rounded-md bg-blue-600 mt-2 text-[10px]'>Connect Wallet</button>
-                    }
-                    {window.tronWeb?.defaultAddress.base58 && !userProfile?.status && <button className='py-2 px-4 my-4 rounded-md bg-blue-700' onClick={() => activateUser()}>
+
+                    {connected && !userProfile?.status && <button className='py-2 px-4 my-4 rounded-md bg-blue-700' onClick={() => activateUser()}>
                         {activateAccountLoadingState ? "Activating" : "Activate Account"}
 
                     </button>
                     }
+
+                    {!connected && <div className='my-3'>
+                        <ConnectComponent></ConnectComponent></div>}
+
 
                 </div>
 
@@ -42,3 +48,5 @@ const Login = () => {
 }
 
 export default Login
+
+
