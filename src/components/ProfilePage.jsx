@@ -46,7 +46,7 @@ const ProfilePage = () => {
                         </div>
                         <div className='my-4'>
                             <p>Ignite Balance</p>
-                            <input type="text" className='w-1/2 py-3 px-2 outline-none rounded-md' readOnly placeholder={userProfile?.igniteAmount ? userProfile?.igniteAmount : 0} />
+                            <input type="text" className='w-1/2 py-3 px-2 outline-none rounded-md' readOnly placeholder={userProfile?.igniteAmount ? (userProfile?.igniteAmount).toString() : "0"} />
                         </div>
 
                         <button className='bg-blue-600 py-2 px-2 text-white rounded-sm'>Update Profile</button>
