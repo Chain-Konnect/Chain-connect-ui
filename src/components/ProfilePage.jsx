@@ -27,7 +27,6 @@ const ProfilePage = () => {
                         <div className='rounded-full border   h-[150px] w-[150px] my-4'>
                             <img src={userProfile?.profileUrl ?? nft} className='w-full h-full bg-white rounded-full' />
 
-
                         </div>
                         <div className='space-x-2'>
                             <button className='bg-blue-600 py-2 px-2 text-white rounded-sm'>Change Avatar</button>
