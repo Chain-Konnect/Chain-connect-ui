@@ -4,7 +4,8 @@ import { AppContext } from '../ContextAPI';
 
 
 const Login = () => {
-    const { modals, setModals, userProfile, isConnected, activateUser,activateAccountLoadingState } = useContext(AppContext);
+    const { modals, setModals, userProfile, activateUser, activateAccountLoadingState, connectWallet } = useContext(AppContext);
+ 
     return (
         <div className='flex flex-1 h-screen p-2 text-white font-poppins bg-gray-300'>
             <div className='flex-[0.4] bg-black h-full rounded-lg items-center flex flex-col justify-center'>
@@ -20,12 +21,12 @@ const Login = () => {
                     <p className='text-[12px] mt-2 text-black'>Connect, Create, Earn - Your Blockchain Social Hub</p>
                     <p className='text-[12px] mt-2 text-black'> Login or Sign up by connecting your wallet</p>
 
-                    {!isConnected && <div className='my-4'>
-                        <w3m-button />
-                    </div>
+
+                    {!window.tronWeb?.defaultAddress.base58 &&
+                        <button onClick={() => connectWallet()} className='p-4 rounded-md bg-blue-700'>Connect Wallet</button>
                     }
-                    {isConnected && !userProfile?.status && <button className='py-2 px-4 my-4 rounded-md bg-blue-700' onClick={()=>activateUser()}>
-                        {activateAccountLoadingState ? "Activating": "Activate Account"}
+                    {window.tronWeb?.defaultAddress.base58 && !userProfile?.status && <button className='py-2 px-4 my-4 rounded-md bg-blue-700' onClick={() => activateUser()}>
+                        {activateAccountLoadingState ? "Activating" : "Activate Account"}
 
                     </button>
                     }

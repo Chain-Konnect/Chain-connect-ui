@@ -16,8 +16,8 @@ const SideBar = ({ currentNav, setCurrentNav }) => {
                     <img src={nft} className='w-full h-full rounded-full' />
 
                 </div>
-                <p className='text-[10px]'>{userProfile?.profileName ?? 'N/A'}</p>
-                <p className='text-[12px]'><span className='font-semibold'>Wallet :</span> {address.substring(0, 4)}.......{address.substr(-5)}</p>
+                <p className='text-[10px] italic'> <span className='font-semibold'>Username</span> : {userProfile?.profileName ?? 'N/A'}</p>
+                <p className='text-[10px] italic'><span className='font-semibold'>Wallet :</span> {window.tronWeb?.defaultAddress.base58.substring(0, 4)}.......{window.tronWeb?.defaultAddress.base58.substr(-5)}</p>
 
             </div>
             <div className={`${currentNav == 0 ? 'bg-gray-400' : ''} my-2 flex  space-x-2 items-center cursor-pointer ml-2 hover:scale-x-95 hover:duration-300 hover:bg-gray-400 px-2 py-2 rounded-sm`} onClick={() => setCurrentNav(0)}>
@@ -44,13 +44,7 @@ const SideBar = ({ currentNav, setCurrentNav }) => {
                 <img src={bookmark} className='w-[5%]' />
                 <p className=' tracking-widest'>Bookmark</p>
             </div> */}
-            <div className={` ${currentNav == 6 ? 'bg-gray-400' : ''} my-2   space-x-2 items-center cursor-pointer hover:scale-x-95 hover:duration-300 hover:bg-gray-400 px-2 py-2 rounded-sm`} onClick={() => setCurrentNav(6)}>
-                {/* <img src={logout} className='w-[5%]' /> */}
-                <p className=' tracking-widest'>Log Out</p>
 
-                <w3m-button />
-
-            </div>
 
 
 

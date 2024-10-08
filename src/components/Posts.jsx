@@ -9,7 +9,7 @@ const Posts = () => {
     const myPost = [0, 1, 2, 4, 5, 6, 7, 9]
     const [showProfileModal, setshowProfileModal] = useState(false)
     const [currentIndex, setCurrentIndex] = useState(0)
-    const { modals, setModals, ignitePost, getPost, allPost, likeAPost, ignitePostData, setIgnitePostData } = useContext(AppContext);
+    const { modals, setModals, ignitePost, getPost, allPost, likeAPost, ignitePostData, setIgnitePostData, getPostAuthorDetails,getPostComments } = useContext(AppContext);
     const [formdata, setFormdata] = useState({
         pageNumber: 1,
         pageSize: 20
@@ -37,7 +37,7 @@ const Posts = () => {
 
                     <div className='flex justify-between my-2'>
                         <div className='h-[40px] flex items-center space-x-1'>
-                            <img src={nft} className='w-[40px] h-full rounded-full cursor-pointer bg-black' onMouseEnter={() =>{
+                            <img src={nft} className='w-[40px] h-full rounded-full cursor-pointer bg-black' onMouseEnter={() => {
                                 setCurrentIndex(i)
                                 setshowProfileModal(true)
                             }} />
@@ -45,7 +45,7 @@ const Posts = () => {
 
 
                         </div>
-                        {showProfileModal && currentIndex == i && <ProfileModal setshowProfileModal = {setshowProfileModal}/>}
+                        {showProfileModal && currentIndex == i && <ProfileModal setshowProfileModal={setshowProfileModal} address = {e?.author} />}
 
                         <div className='text-[10px]'>
                             <p className='italic text-gray-700'><span className='font-semibold'>Time:</span>{timeAgo(e?.createdAt)}</p>
@@ -67,7 +67,12 @@ const Posts = () => {
                         <p className='text-[12px] font-semibold'>{e?.likeCount} Like(s)</p>
                     </div>
                     <div className='flex cursor-pointer'>
-                        <img src={comment} className='w-[15px]' onClick={() => setModals({ ...modals, CommentOnPostModal: true })} />
+                        <img src={comment} className='w-[15px]' onClick={() => {
+                            getPostComments(e?.postId,e?.commentCount )
+                            setModals({ ...modals, CommentOnPostModal: true })
+
+                            setIgnitePostData({ ...ignitePostData, postId: e?.postId, author: e?.author })
+                        }} />
                         <p className='text-[12px] font-semibold'>{e?.commentCount} Comment(s)</p>
                     </div>
                     <div className='flex cursor-pointer'>

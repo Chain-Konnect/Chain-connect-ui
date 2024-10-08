@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { add, bookmark, chats, comment, fire, likes, nft } from '../assets'
 import toast from 'react-hot-toast'
 import { GoogleGenerativeAI } from '@google/generative-ai';
-const GEMINI_KEY = import.meta.env.VITE_OPEN_AI_KEY;
+const GEMINI_KEY = import.meta.env.VITE_GEMINI_KEY;
 
 const ChatWithAI = () => {
     const genAI = new GoogleGenerativeAI(
@@ -17,20 +17,21 @@ const ChatWithAI = () => {
 
     const getResponseForGivenPrompt = async (inputValue) => {
         try {
+            const prompt = "You are an AI model of chainConnect named Ruvvy, you are to provide bried responses to"
             // Add human message to the chat first
             setChat((prevChat) => [...prevChat, huma]);
-    
+
             const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-            const result = await model.generateContent(inputValue);
+            const result = await model.generateContent(`${prompt} ${inputValue}`);
             const response = await result.response;
             const text = await response.text();
-    
+
             // Add bot response to the chat after human's message is added
             setChat((prevChat) => [...prevChat, { message: text, author: "bot" }]);
-    
+
             // Clear human input
             setHuman((prevHuman) => ({ ...prevHuman, message: "" }));
-    
+
             return text;
         } catch (error) {
             toast.error("Error occurred");
@@ -60,14 +61,16 @@ const ChatWithAI = () => {
 
                     {Chat?.map((e, i) => (
                         <div key={i}>
-                            {e?.author == "human" ? <div className='flex justify-end min-h-[50px]'>
+                            {e?.author == "human" ? <div className='flex flex-col items-end justify-end min-h-[50px]'>
+                                <p>You</p>
                                 <div className='  rounded-lg shadow-lg w-1/2 my-2 bg-white p-2 mr-1'>
                                     <p>{e?.message}</p>
 
                                 </div>
                             </div>
 
-                                : <div className='flex justify-start min-h-[50px]'>
+                                : <div className='flex flex-col justify-start min-h-[50px]'>
+                                    <p>AI</p>
                                     <div className='  rounded-lg shadow-lg w-1/2 my-2 bg-white p-2 mr-1'>
                                         <p>{e?.message}</p>
 
