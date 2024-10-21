@@ -15,8 +15,7 @@ const YourPost = () => {
 
                         </div>
                         <div className='text-[10px]'>
-                            <p><span className='font-semibold'>ID:</span> 0x32Be343B94f860124dC4fEe278FDCBD38C102D88</p>
-                            <p><span className='font-semibold'>Username:</span> @Michael_12</p>
+                        
                             <p><span className='font-semibold'>Time:</span> 2hours ago</p>
                         </div>
 
@@ -24,7 +23,7 @@ const YourPost = () => {
 
 
                     <div>
-                        <p className='text-[12px]'>
+                        <p className='text-[10px]'>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
 
@@ -32,17 +31,17 @@ const YourPost = () => {
                     </div>
                 </div>
 
-                <div className=' h-[40px] flex items-center space-x-5 mt-4 text-[14px]'>
+                <div className=' h-[40px] flex items-center space-x-5 mt-4 text-[10px]'>
                     <div className='flex cursor-pointer'>
-                        <img src={likes} className='w-[20px]' />
+                        <img src={likes} className='w-[12px]' />
                         <p>0 Likes</p>
                     </div>
                     <div className='flex cursor-pointer'>
-                        <img src={comment} className='w-[20px]' />
+                        <img src={comment} className='w-[12px]' />
                         <p>300 Comments</p>
                     </div>
                     <div className='flex cursor-pointer'>
-                        <img src={fire} className='w-[20px]' />
+                        <img src={fire} className='w-[12px]' />
                         <p>12 Ignite</p>
                     </div>
                     {/* <div className='flex cursor-pointer'>
