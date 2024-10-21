@@ -177,11 +177,8 @@ export const AppContextProvider = ({ children }) => {
     }
 
     const commentPost = async (_formdata) => {
-<<<<<<< HEAD
-=======
         setcommentLoadingState(true)
 
->>>>>>> 5d8b8ab03c3a26d357920b4e5787956d4489eb8c
         try {
 
             const _contract = await initializeTronContract()
@@ -191,16 +188,11 @@ export const AppContextProvider = ({ children }) => {
                 _formdata?.comment,
                 _formdata?.imageOne,
                 _formdata?.imageTwo
-<<<<<<< HEAD
-            )
-            await status.wait();
-=======
             ).send({
                 feeLimit: 200_000_000,
                 callValue: 0,
                 shouldPollResponse: true
             });
->>>>>>> 5d8b8ab03c3a26d357920b4e5787956d4489eb8c
 
 
             toast.success("Comment posted")

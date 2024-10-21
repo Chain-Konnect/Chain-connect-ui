@@ -4,10 +4,6 @@ import { edgelessTestnet } from 'wagmi/chains';
 import { timeAgo } from '../helpers';
 
 const CommentOnPostModal = () => {
-<<<<<<< HEAD
-  const { modals, setModals, commentPost } = useContext(AppContext);
-  const [textCount, setTextCount] = useState(200)
-=======
   const { modals, setModals, commentPost, setPostComments, ignitePostData, postComments, commentLoadingState } = useContext(AppContext);
   const [textCount, setTextCount] = useState("")
   const myList = [1, 2, 3, 5]
@@ -33,7 +29,6 @@ const CommentOnPostModal = () => {
   useEffect(() => {
 
   }, [formdata, postComments])
->>>>>>> 5d8b8ab03c3a26d357920b4e5787956d4489eb8c
   return (
     <div className='fixed grid h-[100%] z-20 bg-modal-bg place-items-center w-full backdrop-blur-sm lg:px-0 px-4 top-0 font-poppins'>
       <div className='rounded-md  font-poppins bg-white p-4 w-2/5'>
@@ -60,10 +55,6 @@ const CommentOnPostModal = () => {
           )}
 
         </div>
-<<<<<<< HEAD
-        <p className='font-semibold my-2 text-[12px]'>Comment</p>
-=======
->>>>>>> 5d8b8ab03c3a26d357920b4e5787956d4489eb8c
         <div>
           <p className='text-[10px] font-semibold my-2'>Post your comment </p>
           <textarea name="" id="" className='outline-none  border border-black w-full p-2 text-[15px]' rows={4} onChange={(e) => handleTextChange(e)}></textarea>
@@ -74,12 +65,8 @@ const CommentOnPostModal = () => {
 
         </div>
         <div className='flex justify-end'>
-<<<<<<< HEAD
-          <button className='bg-blue-600 rounded-md text-white px-4 py-2 my-4' onClick={()=>commentPost}>Send</button>
-=======
-         {!commentLoadingState && <button className='bg-blue-600 rounded-md text-white px-4 py-2 my-4 text-[10px]' onClick={() => commentPost(formdata)}>Send</button>}
-         {commentLoadingState && <button className='bg-blue-600 rounded-md text-white px-4 py-2 my-4 italic text-[10px]'>Commenting ....</button>}
->>>>>>> 5d8b8ab03c3a26d357920b4e5787956d4489eb8c
+          {!commentLoadingState && <button className='bg-blue-600 rounded-md text-white px-4 py-2 my-4 text-[10px]' onClick={() => commentPost(formdata)}>Send</button>}
+          {commentLoadingState && <button className='bg-blue-600 rounded-md text-white px-4 py-2 my-4 italic text-[10px]'>Commenting ....</button>}
         </div>
 
       </div>
